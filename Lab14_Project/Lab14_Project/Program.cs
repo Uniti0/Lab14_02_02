@@ -10,7 +10,9 @@ namespace Lab14_Project
     {
         static void Main(string[] args)
         {
-          Console.WriteLine("Привет");
+            Console.WriteLine("Привет");
+
+            Console.ReadKey();
         }
     }
 }
