@@ -10,39 +10,28 @@ namespace Lab14_Project
     {
         static void Main(string[] args)
         {
-            string[] banks = { "Сбербанк", "ВТБ", "Газпромбанк", "Альфа-банк", "Тинькофф", "Росбанк", "Уралсиб", "Хоум Кредит", "Райффайзенбанк", "Промсвязьбанк" };
-            int Kol_vo_BANKOV = banks.Length;
 
-            int[] Sell_price = new int[Kol_vo_BANKOV];
+            int[] Sell_price = new int[4];
+            Sell_price[0] = 100;
+            Sell_price[1] = 80;
+            Sell_price[2] = 60;
+            Sell_price[3] = 120;
 
-            Random rnd = new Random();
-            int Kyrs_Valyt = rnd.Next(59, 121);
+            double temp = 0;
+            double temp1 = 0;
 
-            int SamayaVisokayaCena = 0;
-            string LychshiyBankRossii = "";
-
-            Console.WriteLine("Курсы валют:");
-            Console.WriteLine();
-            for (int i = 0; i < Kol_vo_BANKOV; i++)
+            for (int i = 0; i < 4; i++)
             {
-                double randomOtklonenie = rnd.NextDouble() * 0.2 - 0.1; // отклонение в 10%
-                Sell_price[i] = (int)(Kyrs_Valyt * (1 + randomOtklonenie) * 100) / 100; // округляем до 2 знаков после запятой
-                Console.WriteLine(banks[i] + ": " + "(" + Sell_price[i] + ")");
-                if (Sell_price[i] > SamayaVisokayaCena)
+                if (Sell_price[i] > temp ) 
                 {
-                    SamayaVisokayaCena = Sell_price[i];
-                    LychshiyBankRossii = banks[i];
-                }
-            }
+                    temp = Sell_price[i];
+                    temp1 = i;
+                }  
 
-            Console.WriteLine();
-            Console.Write("Введите сумму в долларах: ");
-            double dollars = double.Parse(Console.ReadLine());
-            double maxRubles = SamayaVisokayaCena * dollars;
-            Console.WriteLine("Самый выгодный банк для продажи долларов: " + LychshiyBankRossii);
-            Console.WriteLine("Cумма в рублях, которую можно получить за {0}$ = {1}", dollars, maxRubles);
-            Console.ReadLine();
-            //Можно дописать покупку доллара, покупка есть
+            }
+            Console.WriteLine("Самый выгодный банк для продажи долларов: " + temp1);
+            Console.ReadKey();
         }
+
     }
 }
